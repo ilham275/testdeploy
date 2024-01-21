@@ -31,7 +31,7 @@ pipeline {
                     dir('testdeploy') {
                         // Build Docker image dengan konten HTML
                         echo 'Memulai pembangunan Docker image'
-                        sh '/usr/bin/docker build -t test3 -f Dockerfile .'
+                        bat 'docker build -t test3 -f Dockerfile .'
                         // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
                         echo 'Selesai pembangunan Docker image'
                     }
