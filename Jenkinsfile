@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
-        PORT_MAPPING = '8089:8089'  // Adjust the port mapping as needed
+        PORT_MAPPING = '8081:80'  // Adjust the port mapping as needed
     }
 
     stages {
@@ -29,10 +29,8 @@ pipeline {
                       sh 'ls -l'
                     dir('testdeploy') {
                         // Build Docker image dengan konten HTML
-                        echo 'Memulai pembangunan Docker image'
-                        // bat 'docker build -t test3 -f Dockerfile .'
-                        docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
-                        echo 'Selesai pembangunan Docker image'
+                        bat 'docker build -t test3 -f Dockerfile .'
+                        // docker.build("${DOCKER_IMAGE}",'-f Dockerfile .')
                     }
                     // // Build Docker image with the HTML content
                     // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
