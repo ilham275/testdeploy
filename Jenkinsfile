@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'test3'
-        CONTAINER_NAME = 'objective_jemison'
+        CONTAINER_NAME = 'jhgfd'
         PORT_MAPPING = '8089:8089'  // Adjust the port mapping as needed
     }
 
