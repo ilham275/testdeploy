@@ -8,7 +8,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY . . /usr/share/nginx/html
 
 # Expose the default Nginx port (80)
-EXPOSE 80
+EXPOSE 8089
 
 # Command to start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]
