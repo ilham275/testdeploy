@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+      options {
+        docker.enabled true
+    }
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
