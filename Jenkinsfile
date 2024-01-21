@@ -20,12 +20,16 @@ pipeline {
                 steps {
                     deleteDir()
                     checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
+                          // Tambahkan pernyataan log untuk menampilkan direktori saat ini
+                    echo "Current directory after checkout: ${PWD()}"
                 }
             }
 
         stage('Build Docker Image') {
             steps {
                 script {
+                      echo "Current directory before Docker build: ${PWD()}"
+                      sh 'ls -l'
                     dir('testdeploy') {
                         // Build Docker image dengan konten HTML
                         echo 'Memulai pembangunan Docker image'
