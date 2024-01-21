@@ -1,4 +1,3 @@
-@Library('pipeline-docker')
 pipeline {
     agent any
 
