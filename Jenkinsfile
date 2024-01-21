@@ -1,10 +1,11 @@
+@Library('pipeline-docker')
 pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'test'
+        DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'objective_jemison'
-        PORT_MAPPING = '8089:89'  // Adjust the port mapping as needed
+        PORT_MAPPING = '8089:8089'  // Adjust the port mapping as needed
     }
 
     stages {
