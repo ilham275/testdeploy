@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    // agent any
+    agent { dockerfile true }
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
