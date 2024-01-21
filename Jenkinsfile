@@ -29,7 +29,7 @@ pipeline {
                       sh 'ls -l'
                     dir('testdeploy') {
                         // Build Docker image dengan konten HTML
-                        bat 'docker build -t test3 -f Dockerfile .'
+                        sh 'docker build -t test3 -f Dockerfile .'
                         // docker.build("${DOCKER_IMAGE}",'-f Dockerfile .')
                     }
                     // // Build Docker image with the HTML content
