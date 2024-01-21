@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'andrinahaura/test2:latest'
-        CONTAINER_NAME = 'angry_moser'
+        DOCKER_IMAGE = 'test'
+        CONTAINER_NAME = 'objective_jemison'
         PORT_MAPPING = '8089:89'  // Adjust the port mapping as needed
     }
 
@@ -19,14 +19,14 @@ pipeline {
             stage('Checkout') {
                 steps {
                     deleteDir()
-                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/andrinahaura/project1.git']]])
+                    checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
                 }
             }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dir('project1') {
+                    dir('testdeploy') {
                         // Build Docker image dengan konten HTML
                         docker.build("${DOCKER_IMAGE}", '-f  Dockerfile .')
                     }
