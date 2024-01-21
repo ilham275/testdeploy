@@ -1,8 +1,4 @@
 pipeline {
-      options {
-        // Import Docker pipeline plugin
-        docker()
-    }
     agent any
 
     environment {
