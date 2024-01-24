@@ -34,7 +34,7 @@ pipeline {
           stage('Run Docker Image') {
             steps {
                     // Build Docker image
-                    sh "docker run --name web_server -d -p 80100:80 test3"
+                    sh "docker run --name web_server -d -p 8010:80 test3"
             }
         }
     }
