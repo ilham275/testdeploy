@@ -26,10 +26,8 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir(env.CURRENT_DIR) {
                     // Build Docker image
                     sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
-                }
             }
         }
     }
