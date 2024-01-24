@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    // agent { dockerfile true }
+    agent { dockerfile true }
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
@@ -16,6 +16,18 @@ pipeline {
         //         git url: 'https://github.com/andrinahaura/project1.git'
         //     }
         // }
+         stage('Run on Docker Agent') {
+            agent {
+                docker {
+                    image 'jenkins/jenkins'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                sh 'docker --version'
+                // Tambahkan langkah-langkah lainnya yang melibatkan Docker di sini
+            }
+        }
             stage('Checkout') {
                 steps {
                     deleteDir()
