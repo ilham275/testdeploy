@@ -29,11 +29,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script{
-                    dir('/var/jenkins_home/workspace/projectilham'){
+                    dir('C:\Users\ilham fajri\Documents\Project\docker\testdeploy'){
                         sh 'docker build -t test3 -f Dockerfile .'
                     }
-                }
                     // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
             }
         }
