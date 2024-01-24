@@ -24,17 +24,17 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                    // Build Docker image
-                    sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //             // Build Docker image
+        //             sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
+        //     }
+        // }
 
           stage('Run Docker Image') {
             steps {
                     // Build Docker image
-                    sh "docker run --name web_server -d -p 80100:80 web"
+                    sh "docker run --name web_server -d -p 80100:80 test3"
             }
         }
     }
