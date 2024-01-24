@@ -1,51 +1,44 @@
 pipeline {
-    // agent any
-      agent {
+    agent {
         docker {
             // Gunakan gambar Docker yang mendukung build Anda
             image 'docker:24.0.6'  // Ganti dengan versi Docker yang sesuai
             args '-v /var/run/docker.sock:/var/run/docker.sock'  // Mount Docker socket agar bisa menggunakan Docker dari dalam Docker
         }
     }
-    // agent { dockerfile true }
+    
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
-        PORT_MAPPING = '8081:80'  // Adjust the port mapping as needed
+        PORT_MAPPING = '8081:80'
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         // Clean workspace before checkout
-        //         deleteDir()
-        //         // Checkout the HTML source code from GitHub
-        //         git url: 'https://github.com/andrinahaura/project1.git'
-        //     }
-        // }
-            stage('Checkout') {
-                steps {
+        stage('Checkout') {
+            steps {
+                script {
+                    // Clean workspace before checkout
                     deleteDir()
                     checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
-                          // Tambahkan pernyataan log untuk menampilkan direktori saat ini
 
+                    // Capture the current directory
+                    def currentDir = sh(script: 'pwd', returnStdout: true).trim()
+                    echo "Current Directory: ${currentDir}"
+
+                    // Set the environment variable for later use
+                    env.CURRENT_DIR = currentDir
                 }
-            }
-
-        stage('Build Docker Image') {
-            steps {
-                            sh 'docker build -t test3 -f Dockerfile .'
-                    // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
             }
         }
 
-    
-        // stage('Run Docker Container') {
-        //     steps {
-        //             // Run Docker container based on the built image
-        //             docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                dir(env.CURRENT_DIR) {
+                    // Build Docker image
+                    sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
+                }
+            }
+        }
     }
 
     post {
