@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
