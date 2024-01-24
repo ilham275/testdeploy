@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PATH = "/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/docker"
-        DOCKER_IMAGE = 'test3'
+        DOCKER_IMAGE = 'test'
         CONTAINER_NAME = 'jhgfd'
         PORT_MAPPING = '8081:80'  // Sesuaikan port mapping sesuai kebutuhan
     }
@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script {
                     sh 'echo $PATH'
+                    
                 }
             }
         }
