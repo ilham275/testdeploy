@@ -22,14 +22,14 @@ pipeline {
                     checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
                           // Tambahkan pernyataan log untuk menampilkan direktori saat ini
                     sh 'pwd'
-                    sh 'docker build -t test3 -f Dockerfile .'
+
 
                 }
             }
 
         stage('Build Docker Image') {
             steps {
-                dir(pwd){
+                dir('/var/jenkins_home/workspace/projectilham'){
                     sh 'docker build -t test3 -f Dockerfile .'
                 }
                     // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
