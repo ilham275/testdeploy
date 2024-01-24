@@ -22,6 +22,8 @@ pipeline {
                     checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
                           // Tambahkan pernyataan log untuk menampilkan direktori saat ini
                     sh 'pwd'
+                        docker.build("${DOCKER_IMAGE}",'-f Dockerfile .')
+
                 }
             }
 
@@ -31,7 +33,6 @@ pipeline {
                     // dir('./testdeploy') {
                         // Build Docker image dengan konten HTML
                         // sh 'docker build -t test3 -f Dockerfile .'
-                        docker.build("${DOCKER_IMAGE}",'-f Dockerfile .')
                         // sh 'build -t test3 -f Dockerfile .'
 
                     // }
