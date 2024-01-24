@@ -21,6 +21,7 @@ pipeline {
                     deleteDir()
                     checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
                           // Tambahkan pernyataan log untuk menampilkan direktori saat ini
+                    sh 'pwd'
                 }
             }
 
