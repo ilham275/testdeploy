@@ -21,14 +21,16 @@ pipeline {
                     deleteDir()
                     checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/ilham275/testdeploy.git']]])
                           // Tambahkan pernyataan log untuk menampilkan direktori saat ini
+                    def cd = pwd()
                 }
             }
 
         stage('Build Docker Image') {
             steps {
-                    // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
+                dir(cd){
                     sh 'docker build -t test3 -f Dockerfile .'
-
+                }
+                    // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
             }
         }
 
