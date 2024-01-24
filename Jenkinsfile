@@ -43,13 +43,5 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            script {
-                // Stop and remove the Docker container after execution
-                docker.image("${DOCKER_IMAGE}").stop()
-                docker.image("${DOCKER_IMAGE}").remove()
-            }
-        }
-    }
+   
 }
