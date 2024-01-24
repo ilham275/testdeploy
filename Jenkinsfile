@@ -26,18 +26,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                    docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
+                    // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
+                    sh 'docker build -t test3 -f Dockerfile .'
 
             }
         }
 
     
-        stage('Run Docker Container') {
-            steps {
-                    // Run Docker container based on the built image
-                    docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
-            }
-        }
+        // stage('Run Docker Container') {
+        //     steps {
+        //             // Run Docker container based on the built image
+        //             docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
+        //     }
+        // }
     }
 
     post {
