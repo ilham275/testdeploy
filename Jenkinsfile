@@ -1,6 +1,13 @@
 pipeline {
     // agent any
-    agent { dockerfile true }
+      agent {
+        docker {
+            // Gunakan gambar Docker yang mendukung build Anda
+            image 'docker:24.0.6'  // Ganti dengan versi Docker yang sesuai
+            args '-v /var/run/docker.sock:/var/run/docker.sock'  // Mount Docker socket agar bisa menggunakan Docker dari dalam Docker
+        }
+    }
+    // agent { dockerfile true }
     environment {
         DOCKER_IMAGE = 'test3'
         CONTAINER_NAME = 'jhgfd'
