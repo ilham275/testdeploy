@@ -18,13 +18,13 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             sh 'docker build -t ${DOCKER_IMAGE} -f Dockerfile .'
-        //         }
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t ${DOCKER_IMAGE} -f Dockerfile .'
+                }
+            }
+        }
 
         stage('Run Docker Container') {
             steps {
