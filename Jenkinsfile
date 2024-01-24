@@ -28,14 +28,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dir('./testdeploy') {
+                    // dir('./testdeploy') {
                         // Build Docker image dengan konten HTML
                         // sh 'docker build -t test3 -f Dockerfile .'
-                        // docker.build("${DOCKER_IMAGE}",'-f Dockerfile .')
+                        docker.build("${DOCKER_IMAGE}",'-f Dockerfile .')
                         // sh 'build -t test3 -f Dockerfile .'
-                      sh 'ls -l'
 
-                    }
+                    // }
                     // // Build Docker image with the HTML content
                     // docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
                 }
