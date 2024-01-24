@@ -26,15 +26,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                    // Build Docker image
+                script{
                     sh "docker build -t ${DOCKER_IMAGE} -f Dockerfile ."
+                }
+                    // Build Docker image
             }
         }
 
           stage('Run Docker Image') {
             steps {
-                    // Build Docker image
+                script{
                     sh "docker run --name web_server -d -p 8010:80 test3"
+                }
+                    // Build Docker image
             }
         }
     }
