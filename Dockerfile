@@ -15,14 +15,17 @@
 # # Command to start Nginx when the container starts
 # CMD ["nginx", "-g", "daemon off;"]
 
-
 FROM jenkins/jenkins
 
 USER root
 
+# Instal Docker
 RUN apt-get update && \
     apt-get install -y docker.io && \
     rm -rf /var/lib/apt/lists/*
+
+# Menambahkan /usr/bin ke dalam PATH
+ENV PATH="/usr/bin:${PATH}"
 
 USER jenkins
 
